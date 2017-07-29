@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.*?>
+<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.wohlers.RandomWordChooser.Controller">
+    <children>
+        <BorderPane maxHeight="Infinity" maxWidth="Infinity" minHeight="0" minWidth="0" prefHeight="400.0" prefWidth="600.0">
+            <right>
+                <VBox prefWidth="300.0" BorderPane.alignment="CENTER">
+                    <children>
+                        <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#addValue" text="Hinzufügen"/>
+                        <TextField fx:id="inputField" onAction="#addValue" promptText="Neuen Wert eingeben"/>
+                        <Button maxWidth="Infinity" mnemonicParsing="false" onAction="#chooseWordFromList" text="Auswählen"/>
+                        <TextField fx:id="output" editable="false"/>
+                    </children>
+                </VBox>
+            </right>
+            <left>
+                <ListView fx:id="inputList" onKeyPressed="#removeItem" prefHeight="200.0" prefWidth="300.0" maxHeight="Infinity" minHeight="0" BorderPane.alignment="CENTER">
+                    <contextMenu>
+                        <ContextMenu>
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#removeItem" text="Löschen"/>
+                            </items>
+                        </ContextMenu>
+                    </contextMenu>
+                </ListView>
+            </left>
+            <top>
+                <MenuBar BorderPane.alignment="CENTER">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="Datei">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#onLoad" text="Laden">
+                                    <accelerator>
+                                        <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                                    </accelerator>
+                                </MenuItem>
+                                <MenuItem mnemonicParsing="false" onAction="#onSave" text="Speichern">
+                                    <accelerator>
+                                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                                    </accelerator>
+                                </MenuItem>
+                                <MenuItem mnemonicParsing="false" onAction="#onExit" text="Beenden">
+                                    <accelerator>
+                                        <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                                    </accelerator>
+                                </MenuItem>
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Bearbeiten">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#removeItem" text="Auswahl löschen"/>
+                                <MenuItem mnemonicParsing="false" onAction="#clearList" text="Liste leeren"/>
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            </top>
+        </BorderPane>
+    </children>
+</StackPane>
